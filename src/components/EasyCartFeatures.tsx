@@ -3,7 +3,7 @@ import { Phone, Heart, Users, Globe, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export const EasyCartFeatures = () => {
-  const { t } = useLanguage();
+  const { t, isRTL } = useLanguage();
   
   const features = [
     {
@@ -46,7 +46,7 @@ export const EasyCartFeatures = () => {
               key={index} 
               className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="flex items-center space-x-3 mb-3">
+              <div className={`flex items-center mb-3 ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
                 {feature.icon}
                 <h3 className="text-lg font-semibold text-gray-800">
                   {feature.title}
