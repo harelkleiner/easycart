@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Shield, Users, Clock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -14,15 +13,15 @@ export const EasyCartHero = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-blue-50 to-sky-100 py-20 px-4">
+    <section className="bg-gradient-to-br from-blue-50 to-sky-100 py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
-        {/* Language selector - always on the right side */}
-        <div className="flex justify-end mb-8">
+        {/* Language selector - fixed position on the right */}
+        <div className="absolute top-8 right-4 z-10">
           <LanguageSelector />
         </div>
 
         {/* Trust indicators bar */}
-        <div className={`flex justify-center items-center mb-12 text-sm text-gray-600 ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
+        <div className={`flex justify-center items-center mb-12 text-sm text-gray-600 mt-16 ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
           <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
             <Shield className="w-4 h-4 text-green-600" />
             <span>{t('trust.secure')}</span>
