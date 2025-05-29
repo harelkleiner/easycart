@@ -1,8 +1,13 @@
-const { chromium } = require('playwright');
-const fs = require('fs');
+import { chromium } from 'playwright';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Load data from JSON
-const data = JSON.parse(fs.readFileSync('shoppingList.json', 'utf-8'));
+const data = JSON.parse(fs.readFileSync(join(__dirname, 'shoppingList.json'), 'utf-8'));
 const products = data.products;
 const delivery = data.delivery;
 

@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { ChatMessage } from '@/components/ChatMessage';
@@ -13,6 +12,16 @@ interface Message {
   timestamp: Date;
 }
 
+// Configuration for different environments
+const config = {
+  // The URL of your local trigger server - this should always be localhost
+  // because the automation needs to run on your computer
+  TRIGGER_SERVER_URL: 'http://localhost:4000',
+  
+  // The webhook URL can be different for dev/prod
+  WEBHOOK_URL: 'https://hujihackathon2025.app.n8n.cloud/webhook-test/shopping'
+};
+
 const Index = () => {
   const { t } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([
@@ -24,6 +33,7 @@ const Index = () => {
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
+  const [waitingForConfirmation, setWaitingForConfirmation] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -48,6 +58,46 @@ const Index = () => {
     });
   }, [t]);
 
+  const runShoppingAgent = async () => {
+    try {
+      const successResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: 'Starting shopping agent...',
+        sender: 'system',
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, successResponse]);
+
+      // Use Cursor's built-in terminal command functionality
+      const event = new CustomEvent('cursor:command', {
+        detail: {
+          command: 'node --experimental-modules shopAgent.js',
+          is_background: false,
+          explanation: 'Running the shopping agent script with ES modules support'
+        }
+      });
+      window.dispatchEvent(event);
+
+      const completionResponse: Message = {
+        id: (Date.now() + 2).toString(),
+        text: 'Shopping agent started! Check the terminal for progress.',
+        sender: 'system',
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, completionResponse]);
+
+    } catch (error) {
+      console.error('Error running shopping agent:', error);
+      const errorResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: `Error running shopping agent: ${error.message}`,
+        sender: 'system',
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, errorResponse]);
+    }
+  };
+
   const handleSendMessage = async (text: string) => {
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -59,9 +109,9 @@ const Index = () => {
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
 
-    // Send GET request to the webhook URL with the message as JSON
     try {
-      const url = new URL('https://hujihackathon2025.app.n8n.cloud/webhook-test/shopping');
+      // First, get response from webhook
+      const url = new URL(config.WEBHOOK_URL);
       url.searchParams.append('message', JSON.stringify({ text }));
       
       const response = await fetch(url.toString(), {
@@ -73,59 +123,56 @@ const Index = () => {
 
       console.log('Webhook response status:', response.status);
       
+      // Handle and display webhook response
       if (response.ok) {
-        // Parse the JSON response
         const responseData = await response.json();
         console.log('Webhook response data:', responseData);
         
-        // Extract the message content from the JSON response
-        let responseText = '';
-        if (typeof responseData === 'string') {
-          responseText = responseData;
-        } else if (responseData.message) {
-          responseText = responseData.message;
-        } else if (responseData.text) {
-          responseText = responseData.text;
-        } else if (responseData.response) {
-          responseText = responseData.response;
-        } else {
-          // If no specific message field, stringify the entire response
-          responseText = JSON.stringify(responseData, null, 2);
+        // Always show this message regardless of webhook response
+        setMessages(prev => [...prev, {
+          id: (Date.now() + 1).toString(),
+          text: "okay i will start the shopping",
+          sender: 'system',
+          timestamp: new Date(),
+        }]);
+
+        // After webhook response is displayed, trigger the automation
+        try {
+          const triggerResponse = await fetch(`${config.TRIGGER_SERVER_URL}/trigger`);
+          
+          if (!triggerResponse.ok) {
+            throw new Error('Failed to start automation. Make sure the trigger server is running on your computer.');
+          }
+
+          setMessages(prev => [...prev, {
+            id: (Date.now() + 2).toString(),
+            text: 'Shopping automation started! Check your computer for the browser window. (Make sure trigger.js is running locally)',
+            sender: 'system',
+            timestamp: new Date(),
+          }]);
+        } catch (automationError) {
+          console.error('Automation error:', automationError);
+          setMessages(prev => [...prev, {
+            id: (Date.now() + 2).toString(),
+            text: `Failed to start shopping automation: Make sure trigger.js is running on your computer (node trigger.js)`,
+            sender: 'system',
+            timestamp: new Date(),
+          }]);
         }
-        
-        const systemResponse: Message = {
-          id: (Date.now() + 1).toString(),
-          text: responseText,
-          sender: 'system',
-          timestamp: new Date(),
-        };
-        
-        setMessages(prev => [...prev, systemResponse]);
       } else {
-        console.error('Failed to send message to webhook:', response.status);
-        // Add error message to chat
-        const errorResponse: Message = {
-          id: (Date.now() + 1).toString(),
-          text: t('chat.errorMessage').replace('{status}', response.status.toString()),
-          sender: 'system',
-          timestamp: new Date(),
-        };
-        setMessages(prev => [...prev, errorResponse]);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
     } catch (error) {
-      console.error('Error sending message to webhook:', error);
-      
-      // Add CORS/network error message to chat
-      const errorResponse: Message = {
+      console.error('Error:', error);
+      setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(),
-        text: t('chat.networkError'),
+        text: `Error: ${error.message}`,
         sender: 'system',
         timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, errorResponse]);
+      }]);
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
   return (
@@ -133,9 +180,7 @@ const Index = () => {
       <Header />
       
       <main className="flex-1 flex flex-col max-w-4xl mx-auto w-full px-4 py-6">
-        {/* Chat Container */}
         <div className="flex-1 bg-white rounded-2xl shadow-lg border border-gray-200 flex flex-col overflow-hidden">
-          {/* Messages Area */}
           <div className="flex-1 overflow-y-auto p-6 space-y-6">
             {messages.map((message) => (
               <ChatMessage key={message.id} message={message} />
@@ -144,7 +189,6 @@ const Index = () => {
             <div ref={messagesEndRef} />
           </div>
           
-          {/* Input Area */}
           <div className="border-t border-gray-200 p-6">
             <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} />
           </div>
