@@ -64,7 +64,7 @@ const translations = {
     'features.familyFriendly.description': 'Your family can help you get started and place orders together',
     
     // Chat
-    'chat.welcomeMessage': 'Hello! I\'m here to help you with your grocery shopping. You can tell me things like "I need milk, bread, and eggs" or "Help me find ingredients for pasta dinner." What groceries would you like to order today?',
+    'chat.welcomeMessage': 'Hello! I\'m here to help you with your grocery shopping.\nPlease tell me what you want to order and I\'ll take care of it for you',
     'chat.placeholder': 'Tell me what groceries you need... For example: \'I need milk, bread, and bananas\' or \'Help me plan dinner for tonight\'',
     'chat.errorMessage': 'Sorry, I encountered an error ({status}). Please try again.',
     'chat.networkError': 'Sorry, I\'m having trouble connecting to the service right now. This might be due to network restrictions. Please try again later.',
@@ -123,7 +123,7 @@ const translations = {
     'features.familyFriendly.description': 'המשפחה שלך יכולה לעזור לך להתחיל ולבצע הזמנות יחד',
     
     // Chat
-    'chat.welcomeMessage': 'שלום! אני כאן כדי לעזור לך עם קניות המצרכים. אתה יכול להגיד לי דברים כמו "אני צריך חלב, לחם וביצים" או "עזור לי למצוא רכיבים לארוחת פסטה". איזה מצרכים תרצה להזמין היום?',
+    'chat.welcomeMessage': 'שלום! אני כאן כדי לעזור לך עם קניות המצרכים.\nאנא שלח לי מה אתה רוצה להזמין ואבצע זאת בשבילך',
     'chat.placeholder': 'ספר לי איזה מצרכים אתה צריך... לדוגמה: \'אני צריך חלב, לחם ובננות\' או \'עזור לי לתכנן ארוחת ערב\'',
     'chat.errorMessage': 'מצטער, נתקלתי בשגיאה ({status}). אנא נסה שוב.',
     'chat.networkError': 'מצטער, יש לי בעיה להתחבר לשירות כרגע. ייתכן שזה בגלל הגבלות רשת. אנא נסה שוב מאוחר יותר.',
