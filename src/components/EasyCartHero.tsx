@@ -7,7 +7,7 @@ import { LanguageSelector } from './LanguageSelector';
 
 export const EasyCartHero = () => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, isRTL } = useLanguage();
 
   const handleStartShopping = () => {
     navigate('/original');
@@ -16,9 +16,11 @@ export const EasyCartHero = () => {
   return (
     <section className="bg-gradient-to-br from-blue-50 to-sky-100 py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* Language selector in top right */}
-        <div className="flex justify-end mb-8">
-          <LanguageSelector />
+        {/* Language selector - fixed position regardless of RTL */}
+        <div className={`flex mb-8 ${isRTL ? 'justify-start' : 'justify-end'}`}>
+          <div className={isRTL ? 'ml-auto' : 'mr-auto'} style={{ marginLeft: isRTL ? 'auto' : 'unset', marginRight: isRTL ? 'unset' : 'auto' }}>
+            <LanguageSelector />
+          </div>
         </div>
 
         {/* Trust indicators bar */}

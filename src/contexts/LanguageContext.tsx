@@ -76,14 +76,14 @@ const translations = {
   he: {
     // Header
     'header.title': 'עוזר דיגיטלי',
-    'header.subtitle': 'החבר המועיל שלך למשימות דיגיטליות',
+    'header.subtitle': 'המלווה הדיגיטלי שלך',
     
     // Hero section
-    'hero.title': 'קניות פשוטות ובטוחות',
-    'hero.subtitle': 'תן לעוזר הידידותי שלנו לעזור לך להזמין מצרכים באינטרנט. אין אתרים מסובכים, פשוט תגיד לנו מה אתה צריך. מהימן על ידי משפחות ברחבי הארץ.',
-    'hero.startShopping': 'התחל לקנות עכשיו',
-    'hero.noCredit': '✓ לא נדרש כרטיס אשראי ✓ ביטול בכל עת ✓ המשפחה יכולה לעזור בהתקנה',
-    'hero.trusted': 'מהימן על ידי משפחות ברחבי הארץ',
+    'hero.title': 'קניות קלות ובטוחות',
+    'hero.subtitle': 'תן לעוזר הידידותי שלנו לסייע לך להזמין מצרכים מהבית. ללא אתרים מסובכים, פשוט ספר לנו מה אתה זקוק. מהימן ובטוח למשפחות בכל הארץ.',
+    'hero.startShopping': 'התחל קניות עכשיו',
+    'hero.noCredit': '✓ ללא צורך בכרטיס אשראי ✓ ביטול בכל עת ✓ המשפחה יכולה לעזור',
+    'hero.trusted': 'מהימן על ידי משפחות בכל הארץ',
     'hero.rating': '★★★★★ דירוג 4.9/5',
     'hero.bbb': 'מוסמך BBB',
     'hero.hipaa': 'תואם HIPAA',
@@ -92,41 +92,41 @@ const translations = {
     
     // Trust indicators
     'trust.secure': 'בטוח ומאובטח',
-    'trust.customers': '10,000+ לקוחות מרוצים',
+    'trust.customers': 'יותר מ-10,000 לקוחות מרוצים',
     'trust.support': 'תמיכה 24/7',
     
     // Process section
     'process.title': 'איך EasyCart עובד',
-    'process.subtitle': 'קבלת מצרכים עד הבית פשוטה כמו שיחה',
+    'process.subtitle': 'לקבל מצרכים עד הבית פשוט כמו שיחה',
     'process.step1.title': 'ספר לנו מה אתה צריך',
     'process.step1.description': 'שוחח עם העוזר הידידותי שלנו על המצרכים שלך',
     'process.step2.title': 'אנחנו ממלאים את העגלה',
-    'process.step2.description': 'אנחנו מוצאים את המוצרים הטובים ביותר במחירים נהדרים עבורך',
+    'process.step2.description': 'אנחנו מוצאים עבורך את המוצרים הטובים ביותר במחירים הטובים ביותר',
     'process.step3.title': 'אתה מאשר ומשלם',
-    'process.step3.description': 'סקור את ההזמנה שלך והשלם את הרכישה בבטחה',
+    'process.step3.description': 'בדוק את ההזמנה שלך והשלם את הרכישה בבטחה',
     'process.whyTitle': 'למה משפחות בוחרות ב-EasyCart',
     'process.benefit1': 'עובד עם חשבונות חנויות המצרכים הקיימים שלך',
-    'process.benefit2': 'אין עמלות נסתרות או מנוי נדרש',
-    'process.benefit3': 'תמיכה אנושית אמיתית כשאתה צריך עזרה',
+    'process.benefit2': 'ללא עמלות נסתרות או מנוי חודשי',
+    'process.benefit3': 'תמיכה אנושית אמיתית כאשר אתה זקוק לעזרה',
     'process.benefit4': 'מהימן על ידי אלפי לקוחות מרוצים',
     
     // Features section
-    'features.title': 'עוצב במיוחד עבורך',
-    'features.subtitle': 'כל תכונה בנויה עם נגישות וקלות שימוש כעדיפות הראשונה שלנו',
+    'features.title': 'מעוצב במיוחד עבורך',
+    'features.subtitle': 'כל תכונה נבנתה מתוך דגש על נגישות וקלות שימוש',
     'features.largeDesign.title': 'עיצוב גדול וברור',
-    'features.largeDesign.description': 'הכל מעוצב עם גופנים גדולים וניגודיות גבוהה לקריאה קלה',
+    'features.largeDesign.description': 'הכל מעוצב עם גופנים גדולים וניגודיות גבוהה לקריאה נוחה',
     'features.simpleConversations.title': 'שיחות פשוטות',
-    'features.simpleConversations.description': 'פשוט דבר בטבעיות - אין טפסים מסובכים או תפריטים מבלבלים',
-    'features.noDownloads.title': 'אין צורך בהורדות',
-    'features.noDownloads.description': 'עובד בדפדפן האינטרנט שלך בכל מכשיר - מחשב, טאבלט או טלפון',
+    'features.simpleConversations.description': 'פשוט דבר באופן טבעי - ללא טפסים מסובכים או תפריטים מבלבלים',
+    'features.noDownloads.title': 'ללא צורך בהורדות',
+    'features.noDownloads.description': 'עובד בדפדפן האינטרנט שלך בכל מכשיר - מחשב, טאבלט או סמארטפון',
     'features.familyFriendly.title': 'התקנה ידידותית למשפחה',
     'features.familyFriendly.description': 'המשפחה שלך יכולה לעזור לך להתחיל ולבצע הזמנות יחד',
     
     // Chat
-    'chat.welcomeMessage': 'שלום! אני כאן כדי לעזור לך עם קניות המצרכים. אתה יכול לומר לי דברים כמו "אני צריך חלב, לחם וביצים" או "עזור לי למצוא מרכיבים לארוחת ערב פסטה". איזה מצרכים תרצה להזמין היום?',
-    'chat.placeholder': 'ספר לי איזה מצרכים אתה צריך... לדוגמה: \'אני צריך חלב, לחם ובננות\' או \'עזור לי לתכנן ארוחת ערב להערב\'',
+    'chat.welcomeMessage': 'שלום! אני כאן כדי לעזור לך עם קניות המצרכים. אתה יכול להגיד לי דברים כמו "אני צריך חלב, לחם וביצים" או "עזור לי למצוא רכיבים לארוחת פסטה". איזה מצרכים תרצה להזמין היום?',
+    'chat.placeholder': 'ספר לי איזה מצרכים אתה צריך... לדוגמה: \'אני צריך חלב, לחם ובננות\' או \'עזור לי לתכנן ארוחת ערב\'',
     'chat.errorMessage': 'מצטער, נתקלתי בשגיאה ({status}). אנא נסה שוב.',
-    'chat.networkError': 'מצטער, יש לי בעיה להתחבר לשירות כרגע. זה עלול להיות בגלל הגבלות רשת. אנא נסה שוב מאוחר יותר.',
+    'chat.networkError': 'מצטער, יש לי בעיה להתחבר לשירות כרגע. ייתכן שזה בגלל הגבלות רשת. אנא נסה שוב מאוחר יותר.',
     
     // Language selector
     'language.english': 'English',
