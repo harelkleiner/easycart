@@ -1,8 +1,15 @@
 
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Shield, Users, Clock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export const EasyCartHero = () => {
+  const navigate = useNavigate();
+
+  const handleStartShopping = () => {
+    navigate('/original');
+  };
+
   return (
     <section className="bg-gradient-to-br from-blue-50 to-sky-100 py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -62,9 +69,10 @@ export const EasyCartHero = () => {
           <div className="space-y-4">
             <Button 
               size="lg" 
+              onClick={handleStartShopping}
               className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xl px-12 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 font-semibold w-full md:w-auto"
             >
-              Start Shopping Now - Free Trial
+              Start shopping now
             </Button>
             <p className="text-sm text-gray-600">
               ✓ No credit card required ✓ Cancel anytime ✓ Family can help setup
