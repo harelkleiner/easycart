@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "name": "טחינה גולמית",
+      "quantity": 2
+    },
+    {
+      "name": "חלב בקרטון 3% שומן",
+      "quantity": 1
+    },
+    {
+      "name": "ביצים",
+      "quantity": 1
+    }
+  ],
+  "delivery": {
+    "city": "רעננה",
+    "street": "עקיבא",
+    "number": "9",
+    "preferredTime": "12:00"
+  }
+}
