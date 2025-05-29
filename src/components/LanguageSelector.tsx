@@ -15,7 +15,6 @@ export const LanguageSelector = () => {
 
   return (
     <div className="flex items-center space-x-3">
-      <Globe className="h-4 w-4 text-gray-600" />
       <Select value={language} onValueChange={(value) => setLanguage(value as 'en' | 'he')}>
         <SelectTrigger className="w-[140px]">
           <SelectValue />
@@ -25,6 +24,7 @@ export const LanguageSelector = () => {
           <SelectItem value="he">{t('language.hebrew')}</SelectItem>
         </SelectContent>
       </Select>
+      <Globe className="h-4 w-4 text-gray-600" />
     </div>
   );
 };
