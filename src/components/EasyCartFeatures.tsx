@@ -1,5 +1,5 @@
 
-import { Shield, Phone, Heart, Users, Globe, CheckCircle } from 'lucide-react';
+import { Phone, Heart, Users, Globe, CheckCircle } from 'lucide-react';
 
 export const EasyCartFeatures = () => {
   const features = [
@@ -12,16 +12,6 @@ export const EasyCartFeatures = () => {
       title: "Simple Conversations",
       description: "Just talk naturally - no complicated forms or confusing menus",
       icon: <Heart className="w-6 h-6 text-green-600" />
-    },
-    {
-      title: "Bank-Level Security",
-      description: "Your information is protected with military-grade encryption",
-      icon: <Shield className="w-6 h-6 text-purple-600" />
-    },
-    {
-      title: "Personal Human Support",
-      description: "Real people available 24/7 to help - like talking to a helpful neighbor",
-      icon: <Phone className="w-6 h-6 text-orange-600" />
     },
     {
       title: "No Downloads Required",
