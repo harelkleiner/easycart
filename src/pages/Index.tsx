@@ -55,29 +55,61 @@ const Index = () => {
         },
       });
 
-      console.log('Webhook response:', response);
+      console.log('Webhook response status:', response.status);
       
       if (response.ok) {
-        console.log('Message sent successfully to webhook');
+        // Parse the JSON response
+        const responseData = await response.json();
+        console.log('Webhook response data:', responseData);
+        
+        // Extract the message content from the JSON response
+        let responseText = '';
+        if (typeof responseData === 'string') {
+          responseText = responseData;
+        } else if (responseData.message) {
+          responseText = responseData.message;
+        } else if (responseData.text) {
+          responseText = responseData.text;
+        } else if (responseData.response) {
+          responseText = responseData.response;
+        } else {
+          // If no specific message field, stringify the entire response
+          responseText = JSON.stringify(responseData, null, 2);
+        }
+        
+        const systemResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: responseText,
+          sender: 'system',
+          timestamp: new Date(),
+        };
+        
+        setMessages(prev => [...prev, systemResponse]);
       } else {
         console.error('Failed to send message to webhook:', response.status);
+        // Add error message to chat
+        const errorResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: `Sorry, I encountered an error (${response.status}). Please try again.`,
+          sender: 'system',
+          timestamp: new Date(),
+        };
+        setMessages(prev => [...prev, errorResponse]);
       }
     } catch (error) {
       console.error('Error sending message to webhook:', error);
-    }
-
-    // Simulate API call - in real implementation, this would call your backend
-    setTimeout(() => {
-      const systemResponse: Message = {
+      
+      // Add CORS/network error message to chat
+      const errorResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: 'I understand you want to add those items to your grocery order. Let me help you find the best options and prices for those products. This is a demo response - in the full version, I would search for your items and help you complete your grocery order.',
+        text: 'Sorry, I\'m having trouble connecting to the service right now. This might be due to network restrictions. Please try again later.',
         sender: 'system',
         timestamp: new Date(),
       };
-      
-      setMessages(prev => [...prev, systemResponse]);
-      setIsLoading(false);
-    }, 1500);
+      setMessages(prev => [...prev, errorResponse]);
+    }
+
+    setIsLoading(false);
   };
 
   return (
