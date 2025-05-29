@@ -1,26 +1,29 @@
 
 import { MessageCircle, ShoppingCart, CreditCard } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const EasyCartProcess = () => {
+  const { t } = useLanguage();
+  
   const steps = [
     {
       number: "1",
-      title: "Tell Us What You Need",
-      description: "Chat with our friendly assistant about your groceries",
+      title: t('process.step1.title'),
+      description: t('process.step1.description'),
       icon: <MessageCircle className="w-8 h-8 text-white" />,
       color: "bg-blue-500"
     },
     {
       number: "2", 
-      title: "We Fill Your Cart",
-      description: "We find the best products at great prices for you",
+      title: t('process.step2.title'),
+      description: t('process.step2.description'),
       icon: <ShoppingCart className="w-8 h-8 text-white" />,
       color: "bg-green-500"
     },
     {
       number: "3",
-      title: "You Approve & Pay",
-      description: "Review your order and complete your purchase securely",
+      title: t('process.step3.title'),
+      description: t('process.step3.description'),
       icon: <CreditCard className="w-8 h-8 text-white" />,
       color: "bg-purple-500"
     }
@@ -31,10 +34,10 @@ export const EasyCartProcess = () => {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 id="process-heading" className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            How EasyCart Works
+            {t('process.title')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Getting your groceries delivered is as easy as having a conversation
+            {t('process.subtitle')}
           </p>
         </div>
 
@@ -56,23 +59,23 @@ export const EasyCartProcess = () => {
 
         {/* Why Families Choose EasyCart */}
         <div className="mt-16 bg-gray-50 rounded-2xl p-8 max-w-4xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Why Families Choose EasyCart</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">{t('process.whyTitle')}</h3>
           <div className="grid md:grid-cols-2 gap-4 text-gray-700">
             <div className="flex items-center space-x-3">
               <span className="text-green-600 text-lg">✓</span>
-              <span>Works with your existing grocery store accounts</span>
+              <span>{t('process.benefit1')}</span>
             </div>
             <div className="flex items-center space-x-3">
               <span className="text-green-600 text-lg">✓</span>
-              <span>No hidden fees or subscription required</span>
+              <span>{t('process.benefit2')}</span>
             </div>
             <div className="flex items-center space-x-3">
               <span className="text-green-600 text-lg">✓</span>
-              <span>Real human support when you need help</span>
+              <span>{t('process.benefit3')}</span>
             </div>
             <div className="flex items-center space-x-3">
               <span className="text-green-600 text-lg">✓</span>
-              <span>Trusted by thousands of satisfied customers</span>
+              <span>{t('process.benefit4')}</span>
             </div>
           </div>
         </div>

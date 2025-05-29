@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { ChatMessage } from '@/components/ChatMessage';
 import { ChatInput } from '@/components/ChatInput';
 import { LoadingIndicator } from '@/components/LoadingIndicator';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Message {
   id: string;
@@ -13,10 +14,11 @@ interface Message {
 }
 
 const Index = () => {
+  const { t } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! I\'m here to help you with your grocery shopping. You can tell me things like "I need milk, bread, and eggs" or "Help me find ingredients for pasta dinner." What groceries would you like to order today?',
+      text: t('chat.welcomeMessage'),
       sender: 'system',
       timestamp: new Date(),
     }
@@ -31,6 +33,20 @@ const Index = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Update welcome message when language changes
+  useEffect(() => {
+    setMessages(prev => {
+      const newMessages = [...prev];
+      if (newMessages[0] && newMessages[0].id === '1') {
+        newMessages[0] = {
+          ...newMessages[0],
+          text: t('chat.welcomeMessage')
+        };
+      }
+      return newMessages;
+    });
+  }, [t]);
 
   const handleSendMessage = async (text: string) => {
     const userMessage: Message = {
@@ -90,7 +106,7 @@ const Index = () => {
         // Add error message to chat
         const errorResponse: Message = {
           id: (Date.now() + 1).toString(),
-          text: `Sorry, I encountered an error (${response.status}). Please try again.`,
+          text: t('chat.errorMessage').replace('{status}', response.status.toString()),
           sender: 'system',
           timestamp: new Date(),
         };
@@ -102,7 +118,7 @@ const Index = () => {
       // Add CORS/network error message to chat
       const errorResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: 'Sorry, I\'m having trouble connecting to the service right now. This might be due to network restrictions. Please try again later.',
+        text: t('chat.networkError'),
         sender: 'system',
         timestamp: new Date(),
       };

@@ -1,26 +1,29 @@
 
 import { Phone, Heart, Users, Globe, CheckCircle } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const EasyCartFeatures = () => {
+  const { t } = useLanguage();
+  
   const features = [
     {
-      title: "Large, Clear Design",
-      description: "Everything designed with large fonts and high contrast for easy reading",
+      title: t('features.largeDesign.title'),
+      description: t('features.largeDesign.description'),
       icon: <CheckCircle className="w-6 h-6 text-blue-600" />
     },
     {
-      title: "Simple Conversations",
-      description: "Just talk naturally - no complicated forms or confusing menus",
+      title: t('features.simpleConversations.title'),
+      description: t('features.simpleConversations.description'),
       icon: <Heart className="w-6 h-6 text-green-600" />
     },
     {
-      title: "No Downloads Required",
-      description: "Works in your web browser on any device - computer, tablet, or phone",
+      title: t('features.noDownloads.title'),
+      description: t('features.noDownloads.description'),
       icon: <Globe className="w-6 h-6 text-teal-600" />
     },
     {
-      title: "Family-Friendly Setup",
-      description: "Your family can help you get started and place orders together",
+      title: t('features.familyFriendly.title'),
+      description: t('features.familyFriendly.description'),
       icon: <Users className="w-6 h-6 text-pink-600" />
     }
   ];
@@ -30,10 +33,10 @@ export const EasyCartFeatures = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 id="features-heading" className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Designed With You In Mind
+            {t('features.title')}
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Every feature is built with accessibility and ease-of-use as our top priority
+            {t('features.subtitle')}
           </p>
         </div>
 
