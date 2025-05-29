@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Shield, Users, Clock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +18,9 @@ export const EasyCartHero = () => {
       <div className="max-w-6xl mx-auto">
         {/* Language selector - fixed position on the right */}
         <div className="absolute top-8 right-4 z-10">
-          <LanguageSelector />
+          <div className="flex-shrink-0">
+            <LanguageSelector />
+          </div>
         </div>
 
         {/* Trust indicators bar */}
