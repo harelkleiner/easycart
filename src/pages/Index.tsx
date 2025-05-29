@@ -43,6 +43,29 @@ const Index = () => {
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
 
+    // Send GET request to the webhook URL with the message as JSON
+    try {
+      const url = new URL('https://hujihackathon2025.app.n8n.cloud/webhook-test/shopping');
+      url.searchParams.append('message', JSON.stringify({ text }));
+      
+      const response = await fetch(url.toString(), {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      console.log('Webhook response:', response);
+      
+      if (response.ok) {
+        console.log('Message sent successfully to webhook');
+      } else {
+        console.error('Failed to send message to webhook:', response.status);
+      }
+    } catch (error) {
+      console.error('Error sending message to webhook:', error);
+    }
+
     // Simulate API call - in real implementation, this would call your backend
     setTimeout(() => {
       const systemResponse: Message = {
