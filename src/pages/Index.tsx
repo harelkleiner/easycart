@@ -16,7 +16,7 @@ const Index = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! I\'m here to help you with your digital tasks. You can ask me things like "I want to book an appointment at the post office" or "Help me pay my electricity bill online."',
+      text: 'Hello! I\'m here to help you with your grocery shopping. You can tell me things like "I need milk, bread, and eggs" or "Help me find ingredients for pasta dinner." What groceries would you like to order today?',
       sender: 'system',
       timestamp: new Date(),
     }
@@ -47,7 +47,7 @@ const Index = () => {
     setTimeout(() => {
       const systemResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: 'I understand you want to help with that task. Let me gather some more details to assist you better. This is a demo response - in the full version, I would analyze your request and help you complete the task step by step.',
+        text: 'I understand you want to add those items to your grocery order. Let me help you find the best options and prices for those products. This is a demo response - in the full version, I would search for your items and help you complete your grocery order.',
         sender: 'system',
         timestamp: new Date(),
       };

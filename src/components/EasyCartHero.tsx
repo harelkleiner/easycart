@@ -36,7 +36,7 @@ export const EasyCartHero = () => {
             <img 
               src="/lovable-uploads/b16cfba5-84fc-4e8c-a277-9c1ade4faa14.png" 
               alt="EasyCart - Your friendly grocery shopping assistant with a grandmother character in a shopping cart"
-              className="h-24 w-auto"
+              className="h-48 w-auto"
             />
           </div>
 

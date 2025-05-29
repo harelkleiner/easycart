@@ -33,7 +33,7 @@ export const ChatInput = ({ onSendMessage, disabled }: ChatInputProps) => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="Type your request here... For example: 'I want to book an appointment at the post office'"
+          placeholder="Tell me what groceries you need... For example: 'I need milk, bread, and bananas' or 'Help me plan dinner for tonight'"
           disabled={disabled}
           className="w-full px-4 py-3 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none min-h-[60px] max-h-32"
           rows={1}
