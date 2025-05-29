@@ -16,24 +16,22 @@ export const EasyCartHero = () => {
   return (
     <section className="bg-gradient-to-br from-blue-50 to-sky-100 py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* Language selector - fixed position regardless of RTL */}
-        <div className={`flex mb-8 ${isRTL ? 'justify-start' : 'justify-end'}`}>
-          <div className={isRTL ? 'ml-auto' : 'mr-auto'} style={{ marginLeft: isRTL ? 'auto' : 'unset', marginRight: isRTL ? 'unset' : 'auto' }}>
-            <LanguageSelector />
-          </div>
+        {/* Language selector - always on the right side */}
+        <div className="flex justify-end mb-8">
+          <LanguageSelector />
         </div>
 
         {/* Trust indicators bar */}
-        <div className="flex justify-center items-center space-x-8 mb-12 text-sm text-gray-600">
-          <div className="flex items-center space-x-2">
+        <div className={`flex justify-center items-center mb-12 text-sm text-gray-600 ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
+          <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
             <Shield className="w-4 h-4 text-green-600" />
             <span>{t('trust.secure')}</span>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
             <Users className="w-4 h-4 text-blue-600" />
             <span>{t('trust.customers')}</span>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
             <Clock className="w-4 h-4 text-purple-600" />
             <span>{t('trust.support')}</span>
           </div>
@@ -59,7 +57,7 @@ export const EasyCartHero = () => {
           
           {/* Chat Assistant Preview */}
           <div className="bg-white rounded-3xl p-6 shadow-xl mb-8 max-w-md mx-auto border border-gray-100">
-            <div className="flex items-start space-x-4">
+            <div className={`flex items-start ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                 <MessageCircle className="w-6 h-6 text-white" />
               </div>
@@ -91,7 +89,7 @@ export const EasyCartHero = () => {
         {/* Additional trust signals */}
         <div className="mt-16 text-center">
           <p className="text-gray-600 text-lg mb-4">{t('hero.trusted')}</p>
-          <div className="flex justify-center space-x-8 text-gray-400">
+          <div className={`flex justify-center text-gray-400 ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
             <div className="text-sm">{t('hero.rating')}</div>
             <div className="text-sm">{t('hero.bbb')}</div>
             <div className="text-sm">{t('hero.hipaa')}</div>

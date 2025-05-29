@@ -76,13 +76,13 @@ const translations = {
   he: {
     // Header
     'header.title': 'עוזר דיגיטלי',
-    'header.subtitle': 'המלווה הדיגיטלי שלך',
+    'header.subtitle': 'המלווה הידידותי שלך למשימות דיגיטליות',
     
     // Hero section
-    'hero.title': 'קניות קלות ובטוחות',
-    'hero.subtitle': 'תן לעוזר הידידותי שלנו לסייע לך להזמין מצרכים מהבית. ללא אתרים מסובכים, פשוט ספר לנו מה אתה זקוק. מהימן ובטוח למשפחות בכל הארץ.',
-    'hero.startShopping': 'התחל קניות עכשיו',
-    'hero.noCredit': '✓ ללא צורך בכרטיס אשראי ✓ ביטול בכל עת ✓ המשפחה יכולה לעזור',
+    'hero.title': 'קניות פשוטות ובטוחות',
+    'hero.subtitle': 'תן לעוזר הידידותי שלנו לסייע לך להזמין מצרכים באינטרנט. ללא אתרים מסובכים, פשוט ספר לנו מה אתה צריך. אמין ובטוח למשפחות בכל הארץ.',
+    'hero.startShopping': 'התחל לקנות עכשיו',
+    'hero.noCredit': '✓ ללא צורך בכרטיס אשראי ✓ ביטול בכל עת ✓ המשפחה יכולה לעזור בהגדרה',
     'hero.trusted': 'מהימן על ידי משפחות בכל הארץ',
     'hero.rating': '★★★★★ דירוג 4.9/5',
     'hero.bbb': 'מוסמך BBB',
@@ -106,13 +106,13 @@ const translations = {
     'process.step3.description': 'בדוק את ההזמנה שלך והשלם את הרכישה בבטחה',
     'process.whyTitle': 'למה משפחות בוחרות ב-EasyCart',
     'process.benefit1': 'עובד עם חשבונות חנויות המצרכים הקיימים שלך',
-    'process.benefit2': 'ללא עמלות נסתרות או מנוי חודשי',
-    'process.benefit3': 'תמיכה אנושית אמיתית כאשר אתה זקוק לעזרה',
+    'process.benefit2': 'ללא עמלות נסתרות או מנוי נדרש',
+    'process.benefit3': 'תמיכה אנושית אמיתית כשאתה צריך עזרה',
     'process.benefit4': 'מהימן על ידי אלפי לקוחות מרוצים',
     
     // Features section
     'features.title': 'מעוצב במיוחד עבורך',
-    'features.subtitle': 'כל תכונה נבנתה מתוך דגש על נגישות וקלות שימוש',
+    'features.subtitle': 'כל תכונה נבנתה עם נגישות וקלות שימוש כעדיפות עליונה',
     'features.largeDesign.title': 'עיצוב גדול וברור',
     'features.largeDesign.description': 'הכל מעוצב עם גופנים גדולים וניגודיות גבוהה לקריאה נוחה',
     'features.simpleConversations.title': 'שיחות פשוטות',
